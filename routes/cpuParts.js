@@ -33,19 +33,7 @@ router.post('/', async (req, res) => {
 
 });
 
-//Getting Specific Data from POST
-// router.get('/:name', async (req, res) => {
-//     const cpuName = req.params.name;
-//     const query = db.collection('cpuModel').where('name', "==", cpuName);
-//     const snapshot = await query.get();
-//     if (snapshot.size > 0) {
-//         res.json(snapshot.docs[0].data());
-//     } else {
-//         res.json({status: 'Welp, I cant find that data...'});
-//     }
-// });
-
-// //Delete Specific POST
+//Delete Specific POST
 // router.delete('/:id', async (req, res) => {
 //     try{
 //         const removedCPUData = await cpuModel.remove({_id: req.params.id});

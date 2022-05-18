@@ -27,7 +27,7 @@ app.use('/case', caseRoutes);
 app.use('/cpuCooler', CPUcoolerRoutes);
 app.use('/gpu', GPURoutes);
 app.use('/powerSupply', PSURoutes);
-app.use('/RAM', RAMRoutes);
+app.use('/ram', RAMRoutes);
 app.use('/caseFan', casefanRoutes);
 app.use('/storage', storageRoutes);
 
