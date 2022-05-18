@@ -1,5 +1,5 @@
 import express from "express";
-import powerSupplyModel from "../models/powerSupplyModel.js";
+// import powerSupplyModel from "../models/powerSupplyModel.js";
 
 const router = express.Router();
 

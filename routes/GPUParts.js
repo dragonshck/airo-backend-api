@@ -1,5 +1,5 @@
 import express from "express";
-import gpuModel from "../models/gpuModel.js";
+// import gpuModel from "../models/gpuModel.js";
 
 const router = express.Router();
 

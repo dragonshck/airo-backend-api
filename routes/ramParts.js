@@ -1,5 +1,5 @@
 import express from "express";
-import ramModel from "../models/ramModel.js";
+// import ramModel from "../models/ramModel.js";
 
 const router = express.Router();
 

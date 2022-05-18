@@ -1,5 +1,5 @@
 import express from "express";
-import caseModel from "../models/caseModel.js";
+// import caseModel from "../models/caseModel.js";
 
 const router = express.Router();
 

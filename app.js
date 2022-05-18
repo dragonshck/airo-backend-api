@@ -1,7 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
-import mongoose from "mongoose";
-import {} from 'dotenv/config';
+// import mongoose from "mongoose";
+// import {} from 'dotenv/config';
 
 import cpuRoutes from "./routes/cpuParts.js";
 import moboRoutes from "./routes/moboParts.js";
@@ -16,14 +16,16 @@ import storageRoutes from "./routes/storageParts.js";
 const app = express();
 const PORT = 5000;
 
-//Routes
+app.use(express.json());
 app.use(bodyParser.json());
+
+//Routes
 
 app.use('/cpu', cpuRoutes);
 app.use('/motherboard', moboRoutes);
 app.use('/case', caseRoutes);
-app.use('/CPUCooler', CPUcoolerRoutes);
-app.use('/GPU', GPURoutes);
+app.use('/cpuCooler', CPUcoolerRoutes);
+app.use('/gpu', GPURoutes);
 app.use('/powerSupply', PSURoutes);
 app.use('/RAM', RAMRoutes);
 app.use('/caseFan', casefanRoutes);
@@ -34,9 +36,9 @@ app.get('/', (req, res) => {
 });
 
 //Database Connection
-mongoose.connect(process.env.DB_CONNECTION, () => {
-    console.log('connected!')
-});
+// mongoose.connect(process.env.DB_CONNECTION, () => {
+//     console.log('connected!')
+// });
 
 
 app.listen(PORT, () => console.log(`Server running on port: http://localhost:${PORT}`));

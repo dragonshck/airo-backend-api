@@ -1,5 +1,5 @@
 import express from "express";
-import coolerModel from "../models/coolerModel.js";
+// import coolerModel from "../models/coolerModel.js";
 
 const router = express.Router();
 

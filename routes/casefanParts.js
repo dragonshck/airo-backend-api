@@ -1,5 +1,5 @@
 import express from "express";
-import casefanModel from "../models/casefanModel.js";
+// import casefanModel from "../models/casefanModel.js";
 
 const router = express.Router();
 
