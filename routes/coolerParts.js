@@ -24,7 +24,8 @@ router.post('/', async (req, res) => {
         brand: req.body.brand,
         fan_rpm: req.body.fan_rpm,
         color: req.body.color,
-        noise_level: req.body.noise_level
+        noise_level: req.body.noise_level,
+        type: req.body.type
     };
 
     try {
@@ -35,15 +36,27 @@ router.post('/', async (req, res) => {
     }
 });
 
-// //Getting Specific Data from POST
-// router.get('/:id', async (req, res) => {
-//     try {
-//         const getData = await coolerModel.findById(req.params.id);
-//     res.json(getData);
-//     } catch (err) {
-//     res.json({message: err});
-//     }
-// });
+//Getting Specific Data from POST
+router.get('/:brand', async (req, res) => {
+    try {
+        const brand = req.params.brand;
+        const queryQ = await db.collection('cpuCoolerData').where('brand', '==', brand).get();
+        res.json(queryQ.docs.map(doc => doc.data()));
+    } catch (err) {
+        res.json({message: err});
+    }
+});
+
+//Retrieve Specific CPU Cooler Type (AIO / HSF)
+router.get('/search/:type', async (req, res) => {
+    try {
+        const type = req.params.type;
+        const query = await db.collection('cpuCoolerData').where('type', '==', type).get();
+        res.json(query.docs.map(doc => doc.data()));
+    } catch (err) {
+        res.json({message: err});
+    }
+});
 
 // //Delete Specific POST
 // router.delete('/:id', async (req, res) => {

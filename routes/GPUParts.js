@@ -36,6 +36,28 @@ router.post('/', async (req, res) => {
     }
 });
 
+//Retrieve Specific Product by Brand Name
+router.get('/:brand', async (req, res) => {
+    try {
+        const brand = req.params.brand;
+        const queryQ = await db.collection('gpuData').where('brand', '==', brand).get();
+        res.json(queryQ.docs.map(doc => doc.data()));
+    } catch (err) {
+        res.json({message: err});
+    }
+});
+
+// Retrieve Specific Manufacturer Name
+router.get('/search/:manufacturer', async (req, res) => {
+    try {
+        const manufacturer = req.params.manufacturer;
+        const query = await db.collection('gpuData').where('manufacturer', '==', manufacturer).get();
+        res.json(query.docs.map(doc => doc.data()));
+    } catch (err) {
+        res.json({message: err});
+    }
+});
+
 // //Delete Specific POST
 // router.delete('/:id', async (req, res) => {
 //     try{

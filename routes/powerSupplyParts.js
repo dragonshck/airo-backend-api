@@ -36,15 +36,27 @@ router.post('/', async (req, res) => {
     }
 });
 
-// //Getting Specific Data from POST
-// router.get('/:id', async (req, res) => {
-//     try {
-//         const getData = await powerSupplyModel.findById(req.params.id);
-//     res.json(getData);
-//     } catch (err) {
-//     res.json({message: err});
-//     }
-// });
+// Getting Specific Product by Brand Name
+router.get('/:brand', async (req, res) => {
+    try {
+        const brand = req.params.brand;
+        const queryQ = await db.collection('powerSupplyData').where('brand', '==', brand).get();
+        res.json(queryQ.docs.map(doc => doc.data()));
+    } catch (err) {
+        res.json({message: err});
+    }
+});
+
+// Retrieve Specific Type of Power Supply by Form Factor
+router.get('/search/:form_factor', async (req, res) => {
+    try {
+        const form_factor = req.params.form_factor;
+        const quehrey = await db.collection('powerSupplyData').where('form_factor', '==', form_factor).get();
+        res.json(quehrey.docs.map(doc => doc.data()));
+    } catch (err) {
+        res.json({message: err})
+    }
+})
 
 // //Delete Specific POST
 // router.delete('/:id', async (req, res) => {

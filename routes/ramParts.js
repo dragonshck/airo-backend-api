@@ -36,15 +36,27 @@ router.post('/', async (req, res) => {
     }
 });
 
-// //Getting Specific Data from POST
-// router.get('/:id', async (req, res) => {
-//     try {
-//         const getData = await ramModel.findById(req.params.id);
-//     res.json(getData);
-//     } catch (err) {
-//     res.json({message: err});
-//     }
-// });
+// //Getting Specific Data by Brand
+router.get('/:brand', async (req, res) => {
+    try {
+        const brand = req.params.brand;
+        const queryQ = await db.collection('ramData').where('brand', '==', brand).get();
+        res.json(queryQ.docs.map(doc => doc.data()));
+    } catch (err) {
+        res.json({message: err});
+    }
+});
+
+//Getting Specific Data by RAM Speed
+router.get('/search/:speed', async (req, res) => {
+    try {
+        const speed = req.params.speed;
+        const query = await db.collection('ramData').where('speed', '==', speed).get();
+        res.json(query.docs.map(doc => doc.data()));
+    } catch (err) {
+        res.json({message: err});
+    }
+});
 
 // //Delete Specific POST
 // router.delete('/:id', async (req, res) => {

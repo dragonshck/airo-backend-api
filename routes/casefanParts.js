@@ -38,15 +38,27 @@ router.post('/', async (req, res) => {
     }
 });
 
-// //Getting Specific Data from POST
-// router.get('/:id', async (req, res) => {
-//     try {
-//         const getData = await casefanModel.findById(req.params.id);
-//     res.json(getData);
-//     } catch (err) {
-//     res.json({message: err});
-//     }
-// });
+//Getting Specific Case Fan by Brand
+router.get('/:brand', async (req, res) => {
+    try {
+        const brand = req.params.brand;
+        const queryQ = await db.collection('caseFanData').where('brand', '==', brand).get();
+        res.json(queryQ.docs.map(doc => doc.data()));
+    } catch (err) {
+        res.json({message: err});
+    }
+});
+
+//Retrieve Fan Size
+router.get('/where/:size', async (req, res) => {
+    try {
+        const size = req.params.size;
+        const qx = await db.collection('caseFanData').where('size', '==', size).get();
+        res.json(qx.docs.map(doc => doc.data()));
+    } catch (err) {
+        res.json({message: err});
+    }
+});
 
 // //Delete Specific POST
 // router.delete('/:id', async (req, res) => {

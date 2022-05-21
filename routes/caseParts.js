@@ -36,15 +36,38 @@ router.post('/', async (req, res) => {
     }
 });
 
-// //Getting Specific Data from POST
-// router.get('/:id', async (req, res) => {
-//     try {
-//         const getData = await caseModel.findById(req.params.id);
-//     res.json(getData);
-//     } catch (err) {
-//     res.json({message: err});
-//     }
-// });
+//Getting Specific Case by Brand
+router.get('/:brand', async (req, res) => {
+    try {
+        const brand = req.params.brand;
+        const queryQ = await db.collection('caseData').where('brand', '==', brand).get();
+        res.json(queryQ.docs.map(doc => doc.data()));
+    } catch (err) {
+        res.json({message: err});
+    }
+});
+
+//Getting Case Type
+router.get('/search/:type', async (req, res) => {
+    try {
+        const type = req.params.type;
+        const qq = await db.collection('caseData').where('type', '==', type).get();
+        res.json(qq.docs.map(doc => doc.data()));
+    } catch (err) {
+        res.json({message: err});
+    }
+});
+
+//Retrieve Case Colors
+router.get('/where/:color', async (req, res) => {
+    try {
+        const color = req.params.color;
+        const qx = await db.collection('caseData').where('color', '==', color).get();
+        res.json(qx.docs.map(doc => doc.data()));
+    } catch (err) {
+        res.json({message: err});
+    }
+});
 
 // //Delete Specific POST
 // router.delete('/:id', async (req, res) => {

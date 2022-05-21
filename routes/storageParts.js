@@ -25,7 +25,7 @@ router.post('/', async (req, res) => {
         capacity: req.body.capacity,
         type: req.body.type,
         form_factor: req.body.form_factor,
-        interface: req.body.interface
+        connection: req.body.connection,
     };
 
     try {
@@ -36,15 +36,38 @@ router.post('/', async (req, res) => {
     }
 });
 
-// //Getting Specific Data from POST
-// router.get('/:id', async (req, res) => {
-//     try {
-//         const getData = await storageModel.findById(req.params.id);
-//     res.json(getData);
-//     } catch (err) {
-//     res.json({message: err});
-//     }
-// });
+//Getting Specific Data Product by Brand
+router.get('/:brand', async (req, res) => {
+    try {
+        const brand = req.params.brand;
+        const queryQ = await db.collection('storageData').where('brand', '==', brand).get();
+        res.json(queryQ.docs.map(doc => doc.data()));
+    } catch (err) {
+        res.json({message: err});
+    }
+});
+
+// Retrieve Specific Product by Storage Type
+router.get('/search/:type', async (req, res) => {
+    try {
+        const type = req.params.type;
+        const qq = await db.collection('storageData').where('type', '==', type).get();
+        res.json(qq.docs.map(doc => doc.data()));
+    } catch (err) {
+        res.json({message: err});
+    }
+});
+
+// Retrieve Specific Product by Interface (M.2 or SATA)
+router.get('/where/:connection', async (req, res) => {
+    try {
+        const connection = req.params.connection;
+        const qx = await db.collection('storageData').where('connection', '==', connection).get();
+        res.json(qx.docs.map(doc => doc.data()));
+    } catch (err) {
+        res.json({message: err});
+    }
+});
 
 // //Delete Specific POST
 // router.delete('/:id', async (req, res) => {
