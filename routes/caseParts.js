@@ -26,6 +26,7 @@ router.post('/', async (req, res) => {
         color: req.body.color,
         power_supply: req.body.power_supply,
         side_panel: req.body.side_panel,
+        description: req.body.description,
     };
 
     try {

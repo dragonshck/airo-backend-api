@@ -27,7 +27,8 @@ router.post('/', async (req, res) => {
         rpm: req.body.rpm,
         airflow: req.body.airflow,
         noise_level: req.body.noise_level,
-        pwm: req.body.pwm
+        pwm: req.body.pwm,
+        description: req.body.description
     };
 
     try {

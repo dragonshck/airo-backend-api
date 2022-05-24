@@ -25,7 +25,8 @@ router.post('/', async (req, res) => {
         fan_rpm: req.body.fan_rpm,
         color: req.body.color,
         noise_level: req.body.noise_level,
-        type: req.body.type
+        type: req.body.type,
+        description: req.body.description,
     };
 
     try {

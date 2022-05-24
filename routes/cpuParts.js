@@ -21,6 +21,7 @@ router.post('/', async (req, res) => {
         core_count: req.body.core_count,
         core_clock: req.body.core_clock,
         tdp: req.body.tdp,
+        description: req.body.description,
         is_gaming: req.body.is_gaming,
     };
 

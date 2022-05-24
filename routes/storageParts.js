@@ -26,6 +26,7 @@ router.post('/', async (req, res) => {
         type: req.body.type,
         form_factor: req.body.form_factor,
         connection: req.body.connection,
+        description: req.body.description
     };
 
     try {

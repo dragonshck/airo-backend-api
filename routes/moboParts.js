@@ -26,6 +26,7 @@ router.post('/', async (req, res) => {
         form_factor: req.body.form_factor,
         max_memory: req.body.max_memory,
         color: req.body.color,
+        description: req.body.description,
     };
 
     try {

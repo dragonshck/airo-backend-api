@@ -25,6 +25,7 @@ router.post('/', async (req, res) => {
         manufacturer: req.body.manufacturer,
         memory: req.body.memory,
         chipset: req.body.chipset,
+        description: req.body.description,
         is_gaming: req.body.is_gaming,
     };
 

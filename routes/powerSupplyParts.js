@@ -26,6 +26,7 @@ router.post('/', async (req, res) => {
         wattage: req.body.wattage,
         form_factor: req.body.form_factor,
         modular: req.body.modular,
+        description: req.body.description,
     };
 
     try {

@@ -25,6 +25,7 @@ router.post('/', async (req, res) => {
         speed: req.body.speed,
         modules: req.body.modules,
         color: req.body.color,
+        description: req.body.description,
         is_gaming: req.body.is_gaming
     };
 
